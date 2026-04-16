@@ -1,0 +1,57 @@
+// ============================================
+// DAY 02 - FIND Operations in MongoDB
+// ============================================
+
+// Switch to database
+db = db.getSiblingDB("college");
+
+// ----------------------------------------
+// find() - Returns all documents
+// ----------------------------------------
+db.student.find();
+
+// ----------------------------------------
+// findOne() - Returns first matching document
+// ----------------------------------------
+db.student.findOne({ name: "Annu" });
+
+// ----------------------------------------
+// find() with specific query
+// ----------------------------------------
+db.student.find({ city: "Delhi" });
+
+// ----------------------------------------
+// Query Operators
+// ----------------------------------------
+
+// $gt → Greater than
+db.student.find({ marks: { $gt: 75 } });
+
+// $lt → Less than
+db.student.find({ marks: { $lt: 50 } });
+
+// $gte → Greater than or equal
+db.student.find({ marks: { $gte: 90 } });
+
+// $lte → Less than or equal
+db.student.find({ marks: { $lte: 60 } });
+
+// ----------------------------------------
+// $in → Match any value in an array
+// ----------------------------------------
+db.student.find({ city: { $in: ["Delhi", "Mumbai"] } });
+
+// ----------------------------------------
+// $or → Logical OR condition
+// ----------------------------------------
+db.student.find({
+  $or: [
+    { marks: { $gt: 75 } },
+    { city: "Delhi" }
+  ]
+});
+
+// ----------------------------------------
+// Projection - show only specific fields
+// ----------------------------------------
+db.student.find({}, { name: 1, marks: 1, _id: 0 });

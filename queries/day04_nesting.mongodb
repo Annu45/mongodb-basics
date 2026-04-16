@@ -1,0 +1,32 @@
+// ============================================
+// DAY 04 - NESTING in MongoDB
+// ============================================
+
+db = db.getSiblingDB("college");
+
+// Insert nested data
+db.student.insertMany([
+  {
+    name: "Annu Mathur",
+    performance: { marks: 92, grade: "A+" }
+  },
+  {
+    name: "Sandhya",
+    performance: { marks: 85, grade: "A" }
+  }
+]);
+
+// Find using nested field
+db.student.find({ "performance.marks": { $gt: 80 } });
+
+// Find specific person
+db.student.findOne({ "performance.grade": "A+" });
+
+// Update nested field
+db.student.updateOne(
+  { name: "Annu Mathur" },
+  { $set: { "performance.marks": 95 } }
+);
+
+// Show data
+db.student.find();

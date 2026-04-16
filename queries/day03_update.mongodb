@@ -1,0 +1,58 @@
+// ============================================
+// DAY 03 - UPDATE Operations in MongoDB
+// ============================================
+
+// Switch to database
+db = db.getSiblingDB("college");
+
+// ----------------------------------------
+// updateOne() - Updates first matching document
+// ----------------------------------------
+
+// Update marks of "Adam" to 99
+db.student.updateOne(
+  { name: "Adam" },         
+  { $set: { marks: 99 } }
+);
+
+// Add a new field to an existing document
+db.student.updateOne(
+  { name: "Annu" },
+  { $set: { city: "Mumbai" } }
+);
+
+// ----------------------------------------
+// updateMany() - Updates all matching documents
+// ----------------------------------------
+
+// Add "status: fail" for students with marks < 50
+db.student.updateMany(
+  { marks: { $lt: 50 } },
+  { $set: { status: "fail" } }
+);
+
+// ----------------------------------------
+// $unset → Removes a field from document
+// ----------------------------------------
+
+// Remove the "status" field
+db.student.updateOne(
+  { name: "Adam" },
+  { $unset: { status: "" } }
+);
+
+// ----------------------------------------
+// upsert: true → Insert if not found
+// ----------------------------------------
+
+db.student.updateOne(
+  { name: "NewStudent" },
+  { $set: { marks: 80, city: "Pune" } },
+  { upsert: true }
+);
+
+// ----------------------------------------
+// Verify updates
+// ----------------------------------------
+
+db.student.find();

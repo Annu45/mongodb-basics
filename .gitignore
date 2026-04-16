@@ -1,1 +1,17 @@
+.# Node
+node_modules/
+npm-debug.log
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# MongoDB logs
+*.log
+mongod.lock
+
+# Environment variables
+.env

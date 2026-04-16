@@ -1,0 +1,34 @@
+// ============================================
+// DAY 01 - INSERT Operations in MongoDB
+// ============================================
+
+// Start shell: mongosh
+// Switch to database
+use("college");
+
+// ----------------------------------------
+// insertOne() - Insert a single document
+// ----------------------------------------
+
+db.student.insertOne({ name: "Annu", age: 21, marks: 91 });
+
+// Insert with more fields
+db.student.insertOne({ name: "Adam", age: 20, marks: 79, city: "Delhi" });
+
+// ----------------------------------------
+// insertMany() - Insert multiple documents
+// ----------------------------------------
+
+db.student.insertMany([
+  { name: "Annu Mathur", marks: 89 },
+  { name: "Sandhya", marks: 95 },
+  { name: "Bob", marks: 65 },
+  { name: "Eve", city: "Delhi" }
+]);
+
+// ----------------------------------------
+// Verify inserted data
+// ----------------------------------------
+
+db.student.find();              // show all documents
+db.getCollectionNames();        // show all collections

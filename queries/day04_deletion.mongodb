@@ -1,0 +1,17 @@
+// ============================================
+// DAY 05 - DELETE Operations in MongoDB
+// ============================================
+
+db = db.getSiblingDB("college");
+
+// Delete one document
+db.student.deleteOne({ name: "Sandhya" });
+
+// Delete multiple documents
+db.student.deleteMany({ marks: { $lt: 70 } });
+
+// Delete specific person
+db.student.deleteOne({ name: "Annu Mathur" });
+
+// Show remaining data
+db.student.find();
